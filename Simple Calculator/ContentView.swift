@@ -8,14 +8,24 @@
 import SwiftUI
 
 struct ContentView: View {
+    private let calcColumns: [GridItem] = [GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0)]
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            resultBoard
+            Spacer()
+            LazyVGrid(columns: calcColumns, spacing: 20) {
+                ForEach(0..<20) { _ in
+                    CalcButton()
+                }
+            }
+            
+            Spacer()
         }
-        .padding()
+        .background(LinearGradient(colors: CalcColors.main, startPoint: .bottomLeading, endPoint: .topTrailing))
+    }
+    
+    private var resultBoard: some View {
+        ResultBoard()
     }
 }
 
