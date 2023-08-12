@@ -21,7 +21,7 @@ struct CalcColors {
     static var functionLightShadow: Color = Color(red: 88/255, green: 85/255, blue: 240/255, opacity: 0.4)
     
     static var operatorDark: [Color] = [Color(red: 242/255, green: 166/255, blue: 97/255), Color(red: 166/255, green: 98/255, blue: 36/255)]
-    static var operatorDartkShadow: Color = Color(red: 255/255, green: 149/255, blue: 52/255, opacity: 0.4)
+    static var operatorDarkShadow: Color = Color(red: 255/255, green: 149/255, blue: 52/255, opacity: 0.4)
     
     static var operatorLight: [Color] = [Color(red: 235/255, green: 197/255, blue: 163/255), Color(red: 255/255, green: 233/255, blue: 214/255)]
     static var operatorLightShadow: Color = Color(red: 240/255, green: 119/255, blue: 9/255, opacity: 0.4)
@@ -30,4 +30,10 @@ struct CalcColors {
     static var numbersShadow: Color = Color(red: 205/255, green: 205/255, blue: 205/255, opacity: 0.4)
     
     static var commonShadow: Color = Color(red: 0/255, green: 0/255, blue: 0/255, opacity: 0.4)
+    
+    static var numberColor: Color = Color(red: 96/255, green: 96/255, blue: 96/255)
+    
+    static var operatorColor: Color = Color(red: 242/255, green: 166/255, blue: 98/255)
+    
+    static var functionColor: Color = Color(red: 73/255, green: 120/255, blue: 241/255)
 }
