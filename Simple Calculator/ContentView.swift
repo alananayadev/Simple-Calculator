@@ -8,26 +8,43 @@
 import SwiftUI
 
 struct ContentView: View {
-    private let viewModel: CalcViewModel = CalcViewModel()
-    private let calcColumns: [GridItem] = [GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0), GridItem(.flexible(minimum: 30), spacing: 0)]
+    @StateObject private var viewModel: CalcViewModel = CalcViewModel()
+    
+    private let calcColumns: [GridItem] = [
+        GridItem(.flexible(minimum: 30), spacing: 0),
+        GridItem(.flexible(minimum: 30), spacing: 0),
+        GridItem(.flexible(minimum: 30), spacing: 0),
+        GridItem(.flexible(minimum: 30), spacing: 0)
+    ]
+    
     var body: some View {
         VStack {
             resultBoard
             Spacer()
             LazyVGrid(columns: calcColumns, spacing: 20) {
-                ForEach(KeyFunction.allCases, id: \.id) { key in
-                    let buttonConfig = viewModel.setButtonConfig(keyFunction: key)
-                    CalcButton(buttonType: buttonConfig, element: key)
+                ForEach(KeyElement.allCases, id: \.id) { key in
+                    CalcButton(
+                        viewModel: viewModel,
+                        element: key
+                    )
                 }
             }
             
             Spacer()
         }
-        .background(LinearGradient(colors: CalcColors.main, startPoint: .bottomLeading, endPoint: .topTrailing))
+        .background(
+            LinearGradient(colors: CalcColors.main, startPoint: .topLeading, endPoint: .bottomTrailing)
+                .shadow(
+                    .inner(color: CalcColors.mainShadow, radius: 70, x: 0, y: 0)
+                )
+        )
+        .preferredColorScheme(ColorScheme.dark)
+        
+        
     }
     
     private var resultBoard: some View {
-        ResultBoard()
+        ResultBoard(resultBoard: $viewModel.resultBoardString)
     }
 }
 

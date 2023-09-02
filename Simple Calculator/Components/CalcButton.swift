@@ -8,43 +8,23 @@
 import SwiftUI
 
 struct CalcButton: View {
-    let element: KeyFunction
+    var viewModel: CalcViewModel
+    let element: KeyElement
+    private var buttonType: ButtonType = ButtonType.numbers
     private var buttonColor: (shadow: Color, color: [Color])?
     private var fontColor: Color?
     private var icon: Image?
     
-    init(buttonType: ButtonType, element: KeyFunction) {
+    init(viewModel: CalcViewModel, element: KeyElement) {
+        self.viewModel = viewModel
         self.element = element
-        setUpButtonElement(buttonType: buttonType)
-    }
-    
-    private mutating func setUpButtonElement(buttonType: ButtonType) {
-        switch buttonType {
-        case .functionDark:
-            buttonColor = (shadow: CalcColors.functionDarkShadow, color: CalcColors.functionDark)
-            fontColor = .white
-        
-        case .functionLight:
-            buttonColor = (shadow: CalcColors.functionLightShadow, color: CalcColors.functionLight)
-            fontColor = CalcColors.functionColor
-        
-        case .operatorDark:
-            buttonColor = (shadow: CalcColors.operatorDarkShadow, color: CalcColors.operatorDark)
-            fontColor = .white
-        
-        case .operatorLight:
-            buttonColor = (shadow: CalcColors.operatorLightShadow, color: CalcColors.operatorLight)
-            fontColor = CalcColors.operatorColor
-        
-        case .numbers:
-            buttonColor = (shadow: CalcColors.numbersShadow, color: CalcColors.numbers)
-            fontColor = CalcColors.numberColor
-        }
+        self.buttonType = setButtonColor()
+        setButtonShadow()
     }
     
     var body: some View {
         Button {
-            print("")
+            viewModel.executeKeyFunction(element)
         } label: {
             buttonContent
                 .font(Font.custom("Inter", size: 100).weight(.bold))
@@ -81,10 +61,44 @@ struct CalcButton: View {
         }
     }
     
-}
-
-struct CalcButton_Previews: PreviewProvider {
-    static var previews: some View {
-        CalcButton(buttonType: .numbers, element: KeyFunction.c)
+    func setButtonColor() -> ButtonType {
+        var buttonType: ButtonType
+        switch element {
+        case .c:
+            buttonType = ButtonType.functionDark
+        case .plusminus, .percentaje:
+            buttonType = ButtonType.functionLight
+        case .division, .multiply, .minus, .plus:
+            buttonType = ButtonType.operatorLight
+        case .equal:
+            buttonType = ButtonType.operatorDark
+        default:
+            buttonType = ButtonType.numbers
+        }
+        return buttonType
+    }
+    
+    private mutating func setButtonShadow() {
+        switch buttonType {
+        case .functionDark:
+            buttonColor = (shadow: CalcColors.functionDarkShadow, color: CalcColors.functionDark)
+            fontColor = .white
+        
+        case .functionLight:
+            buttonColor = (shadow: CalcColors.functionLightShadow, color: CalcColors.functionLight)
+            fontColor = CalcColors.functionColor
+        
+        case .operatorDark:
+            buttonColor = (shadow: CalcColors.operatorDarkShadow, color: CalcColors.operatorDark)
+            fontColor = .white
+        
+        case .operatorLight:
+            buttonColor = (shadow: CalcColors.operatorLightShadow, color: CalcColors.operatorLight)
+            fontColor = CalcColors.operatorColor
+        
+        case .numbers:
+            buttonColor = (shadow: CalcColors.numbersShadow, color: CalcColors.numbers)
+            fontColor = CalcColors.numberColor
+        }
     }
 }

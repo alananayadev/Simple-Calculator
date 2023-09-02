@@ -21,7 +21,7 @@ struct Constants {
     }
 }
 
-enum KeyFunction: String, CaseIterable, Identifiable {
+enum KeyElement: String, CaseIterable, Identifiable {
     var id: String { return self.rawValue }
     case c = "C"
     case plusminus = "+-"
@@ -43,4 +43,17 @@ enum KeyFunction: String, CaseIterable, Identifiable {
     case zero = "0"
     case delete = "<-"
     case equal = "="
+}
+
+enum KeyFunction {
+    case functions
+    case operators
+    case numbers
+}
+
+enum Operator {
+    case sum
+    case subtract
+    case multiply
+    case divide
 }

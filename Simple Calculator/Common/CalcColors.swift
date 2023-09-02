@@ -9,8 +9,9 @@ import Foundation
 import SwiftUI
 
 struct CalcColors {
-    static var main: [Color] = [Color(red: 255/255, green: 255/255, blue: 255/255), Color(red: 188/255, green: 188/255, blue: 188/255)]
-    static var resultBoard: Color = Color(red: 255/255, green: 255/255, blue: 255/255)
+    static var main: [Color] = [Color(red: 21/255, green: 69/255, blue: 161/255), Color(red: 158/255, green: 9/255, blue: 9/255)]
+    static var mainShadow: Color = Color(red: 0, green: 0, blue: 0, opacity: 0.5)
+    static var resultBoard: Color = Color(red: 255/255, green: 255/255, blue: 255/255, opacity: 0.4)
     static var resultBoardUpperShadow: Color = Color(red: 1/255, green: 1/255, blue: 1/255, opacity: 0.4)
     static var resultBoardBottomShadow: Color = Color(red: 204/255, green: 204/255, blue: 204/255)
     
