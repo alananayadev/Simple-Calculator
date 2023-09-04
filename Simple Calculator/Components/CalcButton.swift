@@ -30,8 +30,8 @@ struct CalcButton: View {
                 .font(Font.custom("Inter", size: 100).weight(.bold))
                 .foregroundColor(fontColor)
                 .background(RoundedRectangle(cornerRadius: 30)
-                    .fill(.shadow(.drop(color: CalcColors.commonShadow,radius: 6, x: 4, y: 4))
-                        .shadow(.drop(color: buttonColor?.shadow ?? CalcColors.commonShadow, radius: 4, x: -2, y: -2)))
+                    .shadow(color: CalcColors.commonShadow, radius: 6, x: 4, y:4)
+                    .shadow(color: buttonColor?.shadow ?? CalcColors.commonShadow, radius: 4, x:-2, y: -2)
                     .frame(width: Constants.CalcButton.width, height: Constants.CalcButton.height)
                     .foregroundStyle(LinearGradient(colors: buttonColor?.color ?? CalcColors.numbers, startPoint: .topLeading, endPoint: .bottomTrailing)))
         }

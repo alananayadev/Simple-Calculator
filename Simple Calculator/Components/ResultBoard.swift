@@ -19,12 +19,24 @@ struct ResultBoard: View {
             .padding(.horizontal, Constants.Board.horizontalPadding)
             .background(
                 RoundedRectangle(cornerRadius: 20, style: .continuous)
-                .fill(
-                    .shadow(.inner(color: CalcColors.resultBoardUpperShadow,radius: 8, x:3, y: 3))
-                    .shadow(.inner(color: CalcColors.resultBoardBottomShadow, radius: 8, x: -3, y: -3))
-                )
+                    .shadow(color: CalcColors.resultBoardUpperShadow,radius: 8, x:3, y: 3)
+                    .shadow(color: CalcColors.resultBoardBottomShadow, radius: 8, x: -3, y: -3)
                     .foregroundColor(CalcColors.resultBoard)
             )
+            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color(red: 0/255, green: 0/255, blue: 0/255),
+                                            lineWidth: 0.01)
+                                    .shadow(color: CalcColors.resultBoardBottomShadow,
+                                            radius: 3, x: 5, y: 5)
+                                    .clipShape(
+                                        RoundedRectangle(cornerRadius: 15)
+                                    )
+                                    .shadow(color: CalcColors.resultBoardUpperShadow, radius: 2, x: -2, y: -2)
+                                    .clipShape(
+                                        RoundedRectangle(cornerRadius: 15)
+                                    )
+                            )
             .padding(Constants.Board.horizontalPadding)
     }
 }

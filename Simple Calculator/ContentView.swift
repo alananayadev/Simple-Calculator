@@ -35,12 +35,10 @@ struct ContentView: View {
         .background(
             LinearGradient(colors: CalcColors.main, startPoint: .topLeading, endPoint: .bottomTrailing)
                 .shadow(
-                    .inner(color: CalcColors.mainShadow, radius: 70, x: 0, y: 0)
+                    color: CalcColors.mainShadow, radius: 70, x: 0, y: 0
                 )
         )
         .preferredColorScheme(ColorScheme.dark)
-        
-        
     }
     
     private var resultBoard: some View {
